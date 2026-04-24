@@ -233,7 +233,8 @@ export default function SingleArticle({ article }: { article: ArticleData }) {
         {/* ── Corps Portable Text ── */}
         {article.contenu && article.contenu.length > 0 ? (
           <div className="space-y-1">
-            <PortableText value={article.contenu} components={ptComponents} />
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            <PortableText value={article.contenu} components={ptComponents as any} />
           </div>
         ) : (
           <p className="text-slate-400 italic text-center py-16">
