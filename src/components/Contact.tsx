@@ -4,9 +4,9 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle, Globe, Loader2, ChevronRight } from "lucide-react";
 
-const EMAILJS_SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID  || "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY  || "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID  = "service_60356x5";
+const EMAILJS_TEMPLATE_ID = "template_1yw7vub";
+const EMAILJS_PUBLIC_KEY  = "uvXmnh-oC4rf66_pc";
 
 const INFOS = [
   {
