@@ -74,7 +74,8 @@ export default function Contact() {
         EMAILJS_PUBLIC_KEY
       );
       setSent(true);
-    } catch {
+    } catch (err) {
+      console.error("[EmailJS error]", err);
       setError("Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.");
     } finally {
       setSending(false);
