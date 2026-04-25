@@ -99,7 +99,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="flex flex-col-reverse lg:flex-row lg:items-start gap-8 lg:gap-16">
+        <div className="flex flex-col-reverse lg:flex-row lg:items-start gap-8 lg:gap-24">
 
           {/* ── Info column ── */}
           <div className="lg:w-80 lg:shrink-0 space-y-5">
