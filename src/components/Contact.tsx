@@ -103,7 +103,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16">
 
           {/* ── Formulaire ── */}
-          <div>
+          <div className="lg:self-start">
             <div
               className="rounded-3xl p-8 md:p-10"
               style={{
