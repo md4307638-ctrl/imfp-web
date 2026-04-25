@@ -99,69 +99,9 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="flex flex-col-reverse lg:flex-row lg:items-start gap-8 lg:gap-24">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-24">
 
-          {/* ── Info column ── */}
-          <div className="lg:w-80 lg:shrink-0 space-y-5">
-            {INFOS.map(({ icon: Icon, title, lines }) => (
-              <div key={title} className="flex gap-4 group">
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110"
-                  style={{
-                    background: "rgba(0,180,166,0.18)",
-                    boxShadow: "0 4px 12px rgba(0,180,166,0.15)",
-                  }}
-                >
-                  <Icon className="w-5 h-5 text-[#00B4A6]" />
-                </div>
-                <div>
-                  <p className="text-white font-semibold text-sm">{title}</p>
-                  {lines.map((l) => (
-                    <p key={l} className="text-white/55 text-sm">{l}</p>
-                  ))}
-                </div>
-              </div>
-            ))}
-
-            {/* Google Maps */}
-            <div
-              className="mt-4 rounded-2xl overflow-hidden w-full relative"
-              style={{
-                height: "208px",
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-              }}
-            >
-              <iframe
-                src="https://maps.google.com/maps?q=14.7162747,-17.4660665&output=embed&hl=fr&z=17&markers=14.7162747,-17.4660665"
-                style={{ border: 0, width: "100%", height: "100%", display: "block" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Localisation IMFP – Sacré-Cœur 2, Dakar"
-              />
-              <a
-                href="https://maps.app.goo.gl/HxuqXmAViL7ELmfz5"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute bottom-3 right-3 flex items-center gap-2 text-[#0A1F44] text-xs font-bold px-3 py-2 rounded-xl shadow-lg cursor-pointer z-10 transition-all duration-200"
-                style={{ background: "white" }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "#00B4A6";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "white";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "white";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#0A1F44";
-                }}
-              >
-                <MapPin className="w-3.5 h-3.5" />
-                Ouvrir dans Google Maps
-              </a>
-            </div>
-          </div>
-
-          {/* ── Form column ── */}
+          {/* ── Form column (premier dans le DOM = premier sur mobile) ── */}
           <div className="lg:flex-1">
             <div
               className="rounded-3xl p-8 md:p-10"
@@ -321,6 +261,67 @@ export default function Contact() {
               )}
             </div>
           </div>
+
+          {/* ── Info column (second dans le DOM = second sur mobile, gauche sur desktop) ── */}
+          <div className="lg:w-80 lg:shrink-0 space-y-5">
+            {INFOS.map(({ icon: Icon, title, lines }) => (
+              <div key={title} className="flex gap-4 group">
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110"
+                  style={{
+                    background: "rgba(0,180,166,0.18)",
+                    boxShadow: "0 4px 12px rgba(0,180,166,0.15)",
+                  }}
+                >
+                  <Icon className="w-5 h-5 text-[#00B4A6]" />
+                </div>
+                <div>
+                  <p className="text-white font-semibold text-sm">{title}</p>
+                  {lines.map((l) => (
+                    <p key={l} className="text-white/55 text-sm">{l}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {/* Google Maps */}
+            <div
+              className="mt-4 rounded-2xl overflow-hidden w-full relative"
+              style={{
+                height: "208px",
+                border: "1px solid rgba(255,255,255,0.08)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+              }}
+            >
+              <iframe
+                src="https://maps.google.com/maps?q=14.7162747,-17.4660665&output=embed&hl=fr&z=17&markers=14.7162747,-17.4660665"
+                style={{ border: 0, width: "100%", height: "100%", display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Localisation IMFP – Sacré-Cœur 2, Dakar"
+              />
+              <a
+                href="https://maps.app.goo.gl/HxuqXmAViL7ELmfz5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-3 right-3 flex items-center gap-2 text-[#0A1F44] text-xs font-bold px-3 py-2 rounded-xl shadow-lg cursor-pointer z-10 transition-all duration-200"
+                style={{ background: "white" }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = "#00B4A6";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "white";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = "white";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#0A1F44";
+                }}
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                Ouvrir dans Google Maps
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
