@@ -99,10 +99,10 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="flex flex-col-reverse lg:flex-row lg:justify-between gap-8 lg:gap-20">
+        <div className="flex flex-col-reverse lg:flex-row lg:items-start gap-8 lg:gap-16">
 
           {/* ── Info column ── */}
-          <div className="lg:w-1/3 space-y-5">
+          <div className="lg:w-80 lg:shrink-0 space-y-5">
             {INFOS.map(({ icon: Icon, title, lines }) => (
               <div key={title} className="flex gap-4 group">
                 <div
@@ -162,7 +162,7 @@ export default function Contact() {
           </div>
 
           {/* ── Form column ── */}
-          <div className="lg:w-2/3">
+          <div className="lg:flex-1">
             <div
               className="rounded-3xl p-8 md:p-10"
               style={{
