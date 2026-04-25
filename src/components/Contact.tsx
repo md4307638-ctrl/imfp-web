@@ -99,183 +99,167 @@ export default function Contact() {
           </p>
         </div>
 
-        {/* 2 colonnes desktop : Formulaire (gauche) | Infos + Carte (droite) */}
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16">
+        <div className="space-y-10">
 
-          {/* ── Formulaire ── */}
-          <div className="lg:self-start">
-            <div
-              className="rounded-3xl p-8 md:p-10"
-              style={{
-                background: "white",
-                boxShadow: "0 32px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.05)",
-              }}
-            >
-              {sent ? (
-                <div className="h-full flex flex-col items-center justify-center text-center py-10">
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
-                    style={{ background: "rgba(0,180,166,0.12)", boxShadow: "0 8px 32px rgba(0,180,166,0.2)" }}
-                  >
-                    <CheckCircle className="w-10 h-10 text-[#00B4A6]" />
-                  </div>
-                  <h3 className="text-[#0A1F44] font-bold text-2xl mb-2">Message envoyé !</h3>
-                  <p className="text-gray-500">Nous vous contacterons dans les plus brefs délais.</p>
-                  <button
-                    onClick={() => { setSent(false); setForm({ nom: "", telephone: "", email: "", message: "", formation: "" }); }}
-                    className="mt-6 text-white px-6 py-3 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200 hover:scale-[1.02]"
-                    style={{ background: "linear-gradient(135deg, #0A1F44, #1a3a6e)" }}
-                  >
-                    Envoyer un autre message
-                  </button>
+          {/* ══ 1. FORMULAIRE — pleine largeur ══ */}
+          <div
+            className="rounded-3xl p-8 md:p-10"
+            style={{
+              background: "white",
+              boxShadow: "0 32px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.05)",
+            }}
+          >
+            {sent ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-10">
+                <div
+                  className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
+                  style={{ background: "rgba(0,180,166,0.12)", boxShadow: "0 8px 32px rgba(0,180,166,0.2)" }}
+                >
+                  <CheckCircle className="w-10 h-10 text-[#00B4A6]" />
                 </div>
-              ) : (
-                <>
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      {/* Nom */}
-                      <div>
-                        <label htmlFor="nom" className="block text-[#0A1F44] text-sm font-semibold mb-2">
-                          Nom complet *
-                        </label>
-                        <input
-                          id="nom" name="nom" type="text" required
-                          value={form.nom} onChange={handleChange}
-                          placeholder="Prénom Nom"
-                          className={inputBase}
-                        />
+                <h3 className="text-[#0A1F44] font-bold text-2xl mb-2">Message envoyé !</h3>
+                <p className="text-gray-500">Nous vous contacterons dans les plus brefs délais.</p>
+                <button
+                  onClick={() => { setSent(false); setForm({ nom: "", telephone: "", email: "", message: "", formation: "" }); }}
+                  className="mt-6 text-white px-6 py-3 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200 hover:scale-[1.02]"
+                  style={{ background: "linear-gradient(135deg, #0A1F44, #1a3a6e)" }}
+                >
+                  Envoyer un autre message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid sm:grid-cols-2 gap-5">
+                  {/* Nom */}
+                  <div>
+                    <label htmlFor="nom" className="block text-[#0A1F44] text-sm font-semibold mb-2">
+                      Nom complet *
+                    </label>
+                    <input
+                      id="nom" name="nom" type="text" required
+                      value={form.nom} onChange={handleChange}
+                      placeholder="Prénom Nom"
+                      className={inputBase}
+                    />
+                  </div>
+                  {/* Téléphone */}
+                  <div>
+                    <label htmlFor="telephone" className="block text-[#0A1F44] text-sm font-semibold mb-2">
+                      Téléphone *
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <Phone className="w-4 h-4 text-gray-400" />
                       </div>
-
-                      {/* Téléphone */}
-                      <div>
-                        <label htmlFor="telephone" className="block text-[#0A1F44] text-sm font-semibold mb-2">
-                          Téléphone *
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                            <Phone className="w-4 h-4 text-gray-400" />
-                          </div>
-                          <input
-                            id="telephone" name="telephone" type="tel" required
-                            value={form.telephone} onChange={handleChange}
-                            placeholder="+221 XX XXX XX XX"
-                            className={iconInputBase}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Email */}
-                    <div>
-                      <label htmlFor="email" className="block text-[#0A1F44] text-sm font-semibold mb-2">
-                        Email
-                      </label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                          <Mail className="w-4 h-4 text-gray-400" />
-                        </div>
-                        <input
-                          id="email" name="email" type="email"
-                          value={form.email} onChange={handleChange}
-                          placeholder="vous@exemple.com"
-                          className={iconInputBase}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Formation */}
-                    <div>
-                      <label htmlFor="formation" className="block text-[#0A1F44] text-sm font-semibold mb-2">
-                        Formation souhaitée
-                      </label>
-                      <select
-                        id="formation" name="formation"
-                        value={form.formation} onChange={handleChange}
-                        className={`${inputBase} cursor-pointer`}
-                      >
-                        <option value="">Sélectionnez une formation</option>
-                        <option value="bts">BTS (Bac +2)</option>
-                        <option value="licence">Licence Professionnelle (Bac +3)</option>
-                        <option value="master">Master Professionnel (Bac +5)</option>
-                      </select>
-                    </div>
-
-                    {/* Message */}
-                    <div>
-                      <label htmlFor="message" className="block text-[#0A1F44] text-sm font-semibold mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        id="message" name="message" rows={4}
-                        value={form.message} onChange={handleChange}
-                        placeholder="Décrivez votre projet de formation..."
-                        className={`${inputBase} resize-none`}
-                        style={{ minHeight: "unset" }}
+                      <input
+                        id="telephone" name="telephone" type="tel" required
+                        value={form.telephone} onChange={handleChange}
+                        placeholder="+221 XX XXX XX XX"
+                        className={iconInputBase}
                       />
                     </div>
+                  </div>
+                </div>
 
-                    {error && (
-                      <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-                        {error}
-                      </p>
-                    )}
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-[#0A1F44] text-sm font-semibold mb-2">
+                    Email
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                      <Mail className="w-4 h-4 text-gray-400" />
+                    </div>
+                    <input
+                      id="email" name="email" type="email"
+                      value={form.email} onChange={handleChange}
+                      placeholder="vous@exemple.com"
+                      className={iconInputBase}
+                    />
+                  </div>
+                </div>
 
-                    {/* Submit */}
-                    <button
-                      type="submit"
-                      disabled={sending}
-                      className="w-full text-white font-bold py-4 px-6 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-3 text-base min-h-[56px] hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
-                      style={{
-                        background: sending
-                          ? "linear-gradient(135deg, #0A1F44, #1a3a6e)"
-                          : "linear-gradient(135deg, #0A1F44 0%, #1a3a6e 50%, #0A1F44 100%)",
-                        boxShadow: "0 8px 32px rgba(10,31,68,0.25)",
-                      }}
-                      onMouseEnter={e => {
-                        if (!sending) {
-                          (e.currentTarget as HTMLButtonElement).style.background = "linear-gradient(135deg, #00B4A6, #009183)";
-                          (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 12px 36px rgba(0,180,166,0.4)";
-                        }
-                      }}
-                      onMouseLeave={e => {
-                        if (!sending) {
-                          (e.currentTarget as HTMLButtonElement).style.background = "linear-gradient(135deg, #0A1F44 0%, #1a3a6e 50%, #0A1F44 100%)";
-                          (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 32px rgba(10,31,68,0.25)";
-                        }
-                      }}
-                    >
-                      {sending ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          Envoi en cours...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="w-5 h-5" />
-                          Prendre rendez-vous
-                          <ChevronRight className="w-4 h-4 opacity-70" />
-                        </>
-                      )}
-                    </button>
-                  </form>
-                </>
-              )}
-            </div>
+                {/* Formation */}
+                <div>
+                  <label htmlFor="formation" className="block text-[#0A1F44] text-sm font-semibold mb-2">
+                    Formation souhaitée
+                  </label>
+                  <select
+                    id="formation" name="formation"
+                    value={form.formation} onChange={handleChange}
+                    className={`${inputBase} cursor-pointer`}
+                  >
+                    <option value="">Sélectionnez une formation</option>
+                    <option value="bts">BTS (Bac +2)</option>
+                    <option value="licence">Licence Professionnelle (Bac +3)</option>
+                    <option value="master">Master Professionnel (Bac +5)</option>
+                  </select>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label htmlFor="message" className="block text-[#0A1F44] text-sm font-semibold mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message" name="message" rows={4}
+                    value={form.message} onChange={handleChange}
+                    placeholder="Décrivez votre projet de formation..."
+                    className={`${inputBase} resize-none`}
+                    style={{ minHeight: "unset" }}
+                  />
+                </div>
+
+                {error && (
+                  <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                    {error}
+                  </p>
+                )}
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="w-full text-white font-bold py-4 px-6 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-3 text-base min-h-[56px] hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
+                  style={{
+                    background: sending
+                      ? "linear-gradient(135deg, #0A1F44, #1a3a6e)"
+                      : "linear-gradient(135deg, #0A1F44 0%, #1a3a6e 50%, #0A1F44 100%)",
+                    boxShadow: "0 8px 32px rgba(10,31,68,0.25)",
+                  }}
+                  onMouseEnter={e => {
+                    if (!sending) {
+                      (e.currentTarget as HTMLButtonElement).style.background = "linear-gradient(135deg, #00B4A6, #009183)";
+                      (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 12px 36px rgba(0,180,166,0.4)";
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    if (!sending) {
+                      (e.currentTarget as HTMLButtonElement).style.background = "linear-gradient(135deg, #0A1F44 0%, #1a3a6e 50%, #0A1F44 100%)";
+                      (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 32px rgba(10,31,68,0.25)";
+                    }
+                  }}
+                >
+                  {sending ? (
+                    <><Loader2 className="w-5 h-5 animate-spin" />Envoi en cours...</>
+                  ) : (
+                    <><Send className="w-5 h-5" />Prendre rendez-vous<ChevronRight className="w-4 h-4 opacity-70" /></>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
 
-          {/* ── Colonne droite : [Infos | Carte] sur desktop, empilés sur mobile ── */}
-          <div className="flex flex-col lg:flex-row lg:items-stretch gap-6 lg:self-start">
+          {/* ══ 2. PARTIE BASSE : Infos (gauche) | Carte (droite) ══ */}
+          <div className="flex flex-col lg:flex-row lg:items-stretch lg:gap-16 gap-6">
 
-            {/* Infos textuelles — largeur naturelle */}
+            {/* Infos contact */}
             <div className="space-y-5 lg:shrink-0">
               {INFOS.map(({ icon: Icon, title, lines }) => (
                 <div key={title} className="flex gap-4 group">
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      background: "rgba(0,180,166,0.18)",
-                      boxShadow: "0 4px 12px rgba(0,180,166,0.15)",
-                    }}
+                    style={{ background: "rgba(0,180,166,0.18)", boxShadow: "0 4px 12px rgba(0,180,166,0.15)" }}
                   >
                     <Icon className="w-5 h-5 text-[#00B4A6]" />
                   </div>
@@ -289,17 +273,14 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Carte — remplit tout l'espace restant à droite */}
+            {/* Carte Google Maps — remplit tout l'espace à droite */}
             <div
-              className="lg:flex-1 min-h-[220px] rounded-2xl overflow-hidden relative"
-              style={{
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-              }}
+              className="lg:flex-1 h-[300px] lg:h-[400px] rounded-2xl overflow-hidden relative"
+              style={{ border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}
             >
               <iframe
                 src="https://maps.google.com/maps?q=14.7162747,-17.4660665&output=embed&hl=fr&z=17&markers=14.7162747,-17.4660665"
-                style={{ border: 0, width: "100%", height: "100%", display: "block", minHeight: "220px" }}
+                style={{ border: 0, width: "100%", height: "100%", display: "block" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
