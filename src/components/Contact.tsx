@@ -263,11 +263,11 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* ── Colonne droite : Infos + Carte empilées ── */}
-          <div className="space-y-6 lg:self-start">
+          {/* ── Colonne droite : [Infos | Carte] sur desktop, empilés sur mobile ── */}
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-6 lg:self-start">
 
-            {/* Infos textuelles */}
-            <div className="space-y-5">
+            {/* Infos textuelles — largeur naturelle */}
+            <div className="space-y-5 lg:shrink-0">
               {INFOS.map(({ icon: Icon, title, lines }) => (
                 <div key={title} className="flex gap-4 group">
                   <div
@@ -289,18 +289,17 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Carte juste en dessous */}
+            {/* Carte — remplit tout l'espace restant à droite */}
             <div
-              className="rounded-2xl overflow-hidden relative"
+              className="lg:flex-1 min-h-[220px] rounded-2xl overflow-hidden relative"
               style={{
-                height: "220px",
                 border: "1px solid rgba(255,255,255,0.08)",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
               }}
             >
               <iframe
                 src="https://maps.google.com/maps?q=14.7162747,-17.4660665&output=embed&hl=fr&z=17&markers=14.7162747,-17.4660665"
-                style={{ border: 0, width: "100%", height: "100%", display: "block" }}
+                style={{ border: 0, width: "100%", height: "100%", display: "block", minHeight: "220px" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
