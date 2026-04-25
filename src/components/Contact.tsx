@@ -99,10 +99,10 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-5 gap-10">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-10">
 
           {/* ── Info column ── */}
-          <div className="md:col-span-2 space-y-5">
+          <div className="lg:w-2/5 space-y-5">
             {INFOS.map(({ icon: Icon, title, lines }) => (
               <div key={title} className="flex gap-4 group">
                 <div
@@ -162,7 +162,7 @@ export default function Contact() {
           </div>
 
           {/* ── Form column ── */}
-          <div className="md:col-span-3">
+          <div className="lg:w-3/5">
             <div
               className="rounded-3xl p-8 md:p-10"
               style={{
