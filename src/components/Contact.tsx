@@ -264,7 +264,7 @@ export default function Contact() {
           </div>
 
           {/* ── Colonne droite : Infos + Carte empilées ── */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:self-start">
 
             {/* Infos textuelles */}
             <div className="space-y-5">
